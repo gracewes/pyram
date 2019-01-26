@@ -11,6 +11,6 @@ def home_page():
 
 if __name__ == "__main__":
     if mode == 'DEV':
-        app.run(host='0.0.0.0', debug=True)
+        app.run(host='0.0.0.0', debug=True, port=5000)
     else:
-        app.run(host='0.0.0.0:8080')
+        app.run(host='0.0.0.0', port=8080)
