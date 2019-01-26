@@ -10,8 +10,8 @@ def home_page():
 
 @app.route('/map/<interest>')
 def map(interest):
+    # assert that this interest exists in our database of interests
     return render_template('map.html', interest=interest)
-
 
 
 if __name__ == "__main__":
