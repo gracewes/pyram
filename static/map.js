@@ -21,7 +21,9 @@ function initMap() {
 function placeMarkerAndPanTo(latLng, map) {
   var marker = new google.maps.Marker({
      position: latLng,
-     map:map
+     map:map,
+     icon:'../static/Flame-Bright-Orange-Small.png',
+     size: google.maps.Size(20, 20)
    });
    map.panTo(latLng);
 }
