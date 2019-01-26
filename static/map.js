@@ -25,5 +25,16 @@ function placeMarkerAndPanTo(latLng, map) {
      icon:'../static/Flame-Bright-Orange-Small.png',
      size: google.maps.Size(20, 20)
    });
+  var circle = new google.maps.Circle({
+     center: latLng,
+     map: map,
+     strokeColor: '#F4B642',
+     strokeOpacity: 0.2,
+     strokeWeight: 1,
+     radius: 1000000,
+     fillColor: '#F4B642',
+     fillOpacity: 0.35
+
+  });
    map.panTo(latLng);
 }
