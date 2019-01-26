@@ -8,6 +8,11 @@ mode = 'PROD'
 def home_page():
     return render_template('index.html')
 
+@app.route('/map/<interest>')
+def map(interest):
+    return render_template('map.html', interest=interest)
+
+
 
 if __name__ == "__main__":
     if mode == 'DEV':
