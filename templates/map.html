@@ -33,6 +33,16 @@
     	  map.setCenter(new google.maps.LatLng(39.8097343, -98.5556199));
     	  map.setZoom(3);
         });
+        map.addListener('click', function(e) {
+         placeMarkerAndPanTo(e.latLng, map);
+        });
+      }
+      function placeMarkerAndPanTo(latLng, map) {
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map:map
+        });
+        map.panTo(latLng);
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxBzV4FZRaxmiRlFyICmeMiRk1EJdMOA&callback=initMap"%>
