@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from DatabaseInteraction import Database
+import json
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ mode = 'DEV'
 @app.route('/')
 def home_page():
     db = Database.Database()
-    
+
     return render_template('index.html')
 
 
