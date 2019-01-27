@@ -5,8 +5,8 @@ import json
 
 app = Flask(__name__)
 
-mode = 'DEV'
-# mode = 'PROD'
+#mode = 'DEV'
+mode = 'PROD'
 
 
 # get intersecting radii
