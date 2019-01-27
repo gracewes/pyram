@@ -24,6 +24,7 @@ function initMap() {
 function openModal(){
   //alert("cheked the button - worked");
   $(".modal").addClass("is-active");
+  $("input[name=name]").focus();
 }
 
 function closeModal() {
