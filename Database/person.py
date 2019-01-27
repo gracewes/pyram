@@ -4,9 +4,10 @@ class person:
 
     # class definition for a person using the platform
     
-    def __init__(self, user_name, location, radius, interest, contact_info='None' ):
+    def __init__(self, user_name, email, location, radius, interest, contact_info='None' ):
         # construct person
         self.user_name = user_name
+        self.email = email
         self.location = location 
         self.radius = radius
         self.interest = interest
@@ -15,6 +16,9 @@ class person:
     def get_user_name(self):
         return self.user_name
 
+    def get_email(self):
+        return self.user_name
+    
     def get_location(self):
         return self.location 
 
@@ -30,6 +34,9 @@ class person:
 
     def change_user_name(self, new_user_name):
         self.user_name = new_user_name
+
+    def change_email(self, new_email):
+        self.email = new_email
 
     def change_location(self, new_location):
         self.location = new_location
@@ -48,6 +55,7 @@ class person:
         person_data = {}
 
         person_data['name'] = self.user_name
+        person_data['email'] = self.email
         person_data['location'] = self.location
         person_data['radius'] = self.radius
         person_data['interest'] = self.interest
