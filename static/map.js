@@ -88,7 +88,19 @@ function placeMarkerAndPanTo(latLng, map) {
 }
 
 function displayNeighbors(neighbors) {
+  var list = document.getElementById("menu-list");
   neighbors.forEach(function(person) {
+   var personForList = document.createElement("LI");
+   personForList.className = "menu-item";
+   var linkForPerson = document.createElement("a");
+   linkForPerson.appendChild(document.createTextNode(person.name));
+   personForList.appendChild(linkForPerson);
+   var contactInfoList = document.createElement("UL");
+   var contactInfo = document.createElement("LI");
+   contactInfo.appendChild(document.createTextNode(person['contact info']));
+   contactInfoList.appendChild(contactInfo);
+   personForList.appendChild(contactInfoList);
+   list.appendChild(personForList);
    var marker = new google.maps.Marker({
      position: {
          "lat": person.latitude,
@@ -109,7 +121,8 @@ function displayNeighbors(neighbors) {
      strokeWeight: 1,
      radius: person.radius * 1609.34,
      fillColor: '#F4B642',
-     fillOpacity: 0.35
+     fillOpacity: 0.2
    });
   });
+  document.getElementById("menu-div").style.display = "block";
 }

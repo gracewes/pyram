@@ -2,6 +2,11 @@
 .inline{
     display: inline-block;
 }
+html, 
+body {
+    height: 100%;
+}
+
 .center-text{
   margin-left: auto;
   margin-right: auto;
@@ -98,6 +103,16 @@
 .radius-for-pyram {
    	position: absolute;
         z-index: 5;
+	padding: 20px;
         left: 10px
         top: 10px;
+}
+.menu-div {
+	position: absolute;
+	z-index: 5;
+	padding: 20px;
+	left: 10px;
+	top: 120px;
+	display: none;
+  	background-color: #fff;
 }
