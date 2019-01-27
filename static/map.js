@@ -1,6 +1,7 @@
 var map;
 var oldCircle;
 var oldMarker;
+var firstClick = true;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), 
     {
@@ -17,7 +18,15 @@ function initMap() {
     });
     map.addListener('click', function(e) {
     placeMarkerAndPanTo(e.latLng, map);
+    if(firstClick){
+      requestContactInfo();
+      firstClick = false;
+    }
     });
+}
+function requestContactInfo(){
+  //alert("cheked the button - worked");
+  document.getElementById('getContact').style.display= 'block' ;
 }
 
 function placeMarkerAndPanTo(latLng, map) {
