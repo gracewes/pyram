@@ -6,8 +6,7 @@ import json
 app = Flask(__name__)
 
 mode = 'DEV'
-# mode = 'PROD'
-
+#mode = 'PROD'
 
 # get intersecting radii
 def get_neighors(lat, lng, radius, interest):
