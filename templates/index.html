@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <script src="../static/index.js"></script>
+    <script src="../static/interests.js">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
   <body>
@@ -29,26 +30,14 @@
             <div class="columns">
               <div class="column center-text">
                 <h1 class="title">I am interested in...</h1>
-                <div class="field has-addons">
+                <div class="field">
                   <div class="control is-expanded">
-                    <form>
-                      <input id="query" list="activities" class="input is-large" type="text" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
-                      <datalist id="activities">
-                        <option value="Hiking">
-                        <option value="Rock Climbing">
-                        <option value="Star Gazing">
-                        <option value="Golf">
-                        <option value="Tennis">
-                        <option value="Weight Lifting">
-                        <option value="Bouldering">
-                        <option value="Camping">
-                        <option value="Running">
-                      </datalist>
+                    <form  onsubmit="chooseFirst(event)">
+                      <input id="query" autofocus type="text" oninput="populateMatches()" class="input is-large" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
                     </form>
                   </div>
-                  <div class="control">
-                    <a href="javascript:buildURL()" class="button is-dark is-large">Search</a>
-                  </div>
+                </div>
+                <div class="container" id="matchButtons">
                 </div>
               </div>
             </div>
