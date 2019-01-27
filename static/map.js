@@ -52,12 +52,6 @@ function addToMap(interest){
   }
   xhttp.open("POST", "/getpyram", true);
   xhttp.send(JSON.stringify(dataToSend));
-
-  function updateNeighbors() {
-    xhttp.open("POST", "/updateneighbors", true);
-    xhttp.send(JSON.stringify(dataToSend));
-  }
-  setInterval(updateNeighbors, 3000);
 }
 
 function resizeCircle(raidus) {
@@ -126,6 +120,7 @@ function unhighlightPerson(id) {
 
 function displayNeighbors(neighbors) {
   var list = document.getElementById("menu-list");
+
   var i = 0;
   neighbors.forEach(function(person) {
    var personForList = document.createElement("LI");
