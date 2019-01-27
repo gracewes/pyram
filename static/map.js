@@ -29,8 +29,9 @@ function requestContactInfo(){
   document.getElementById('getContact').style.display= 'block' ;
 }
 
-function addToMap(){
+function addToMap(interest){
   var dataToSend = {
+     "interest": interest,
      "name": document.getElementById('name').value,
      "email":  document.getElementById('email').value,
      "contact":  document.getElementById('contact').value,
@@ -39,8 +40,9 @@ function addToMap(){
      "radius": oldCircle.getRadius()
   }
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/getPyram", true);
-  xhttp.send(dataToSend);
+  xhttp.open("POST", "/getpyram", true);
+  console.log(JSON.stringify(dataToSend));
+  xhttp.send(JSON.stringify(dataToSend));
 }
 
 function resizeCircle(raidus) {
@@ -48,8 +50,6 @@ function resizeCircle(raidus) {
 }
 
 function placeMarkerAndPanTo(latLng, map) {
-   console.log(latLng.lat());
-   console.log(latLng.lng());
    var marker = new google.maps.Marker({
      position: latLng,
      map:map,
