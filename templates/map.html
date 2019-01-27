@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Map View</title>
+    <title>Map - Pyram</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -17,11 +17,54 @@
         padding: 0;
       }
     </style>
+    <script src="../static/map.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
-    <div id="map"></div>
-    <script src='../static/map.js'></script>
+    <div id="map">
+    </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxBzV4FZRaxmiRlFyICmeMiRk1EJdMOA&callback=initMap"%>
     async defer></script>
+   <div class="modal" id="contact-options">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+    <form id="getContact">
+    <table id="modal-table">
+     <tr>
+      <div class="columns">
+       <div class="column">
+        <b>Name:</b><br><input type="text" id="name" name="name"/>
+       </div>
+       <div class="column">
+        <b>Email:</b><br><input type="text" id="email" name="email"/>
+       </div>
+       <div class="column">
+        <b>Contact Info:</b><br><input type="text" id="contact" name="contact"/>
+       </div>
+       </div>
+       </tr>
+       <tr>
+       <div class="columns">
+       <div class="column">
+        <a class="button" href="javascript:addToMap('{{interest|safe}}')">Add Me To Map</a>
+       </div>
+       </div>
+      </table>
+     </div>
+    </form>
+    <button class="modal-close is-large" aria-label="close" onclick="javascript:closeModal()"></button>
+    </div>
+   </div>
+    <div class="radius-for-pyram">
+    <a class="button" href="javascript:openModal()">Place my pyram</a>
+    <div class="slidecontainer">
+      <b>Search Radius</b><br>
+      <b>1 mile</b><input type="range" min="1" max = "100" step="1" value = "25" class="slider" id="radius" oninput="resizeCircle(value)"/><b>100 miles</b>
+    </div>
+   </div>
   </body>
 </html>

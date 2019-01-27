@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home - Pryam</title>
+    <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script src="../static/index.js"></script>
+    <script src="../static/interests.js">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
   <body>
-    <section class="hero is-primary">
-      <div class="hero-body">
-          <div class="container">
-            <h1 class="title">Pyram!</h1>
-            <h2 class="subtitle">Connecting interesting people</h2>
-          </div>
-      </div>
+    <section class="hero is-dark is-bold"> 
+        <div class="hero-body">
+            <div class="container">
+                <a href="/">
+                  <h1 class="title"><img src="static/Assets/Flame-Orange.png" style="height: 1.5em;"> Pyram</h1>
+                </a>
+                <h2 class="subtitle">Connecting interesting people</h2>
+            </div>
+        </div>
     </section>
     <section class="section">
           <div class="container">
             <div class="columns">
-              <div class="column">
+              <div class="column center-text">
                 <h1 class="title">I am interested in...</h1>
-                <div class="field has-addons">
+                <div class="field">
                   <div class="control is-expanded">
-                    <input class="input is-large" type="text" placeholder="Hiking, Rock Climbing, Biking, etc...">
+                    <form  onsubmit="chooseFirst(event)">
+                      <input id="query" autofocus type="text" oninput="populateMatches()" class="input is-large" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
+                    </form>
                   </div>
-                  <div class="control">
-                    <input type="submit" value="Search" class="button is-primary is-large">
-                  </div>
+                </div>
+                <div class="container" id="matchButtons">
                 </div>
               </div>
             </div>

@@ -1,13 +1,15 @@
 import json 
 
-class person:
+class Person:
 
     # class definition for a person using the platform
     
-    def __init__(self, user_name, location, radius, interest, contact_info='None' ):
+    def __init__(self, user_name, email, longitude, latitude, radius, interest, contact_info='None' ):
         # construct person
         self.user_name = user_name
-        self.location = location 
+        self.email = email
+        self.longitude = longitude
+        self.latitude = latitude 
         self.radius = radius
         self.interest = interest
         self.contact_info = contact_info
@@ -15,8 +17,14 @@ class person:
     def get_user_name(self):
         return self.user_name
 
-    def get_location(self):
-        return self.location 
+    def get_email(self):
+        return self.user_name
+    
+    def get_longitude(self):
+        return self.longitude
+
+    def get_latitude(self):
+        return self.latitude 
 
     def get_radius(self):
         return self.radius 
@@ -31,8 +39,11 @@ class person:
     def change_user_name(self, new_user_name):
         self.user_name = new_user_name
 
-    def change_location(self, new_location):
-        self.location = new_location
+    def change_email(self, new_email):
+        self.email = new_email
+
+    def change_longitude(self, new_location):
+        self.longitude = new_longitude
 
     def change_radius(self, new_radius):
         self.radius = new_radius
@@ -48,7 +59,9 @@ class person:
         person_data = {}
 
         person_data['name'] = self.user_name
-        person_data['location'] = self.location
+        person_data['email'] = self.email
+        person_data['longitude'] = self.longitude
+        person_data['latitude'] = self.latitude
         person_data['radius'] = self.radius
         person_data['interest'] = self.interest
         person_data['contact info']= self.contact_info
