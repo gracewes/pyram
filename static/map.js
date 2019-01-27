@@ -29,6 +29,22 @@ function requestContactInfo(){
   document.getElementById('getContact').style.display= 'block' ;
 }
 
+function addToMap(interest){
+  var dataToSend = {
+     "interest": interest,
+     "name": document.getElementById('name').value,
+     "email":  document.getElementById('email').value,
+     "contact":  document.getElementById('contact').value,
+     "lat": oldMarker.getPosition().lat(),
+     "lng": oldMarker.getPosition().lng(),
+     "radius": oldCircle.getRadius()
+  }
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/getpyram", true);
+  console.log(JSON.stringify(dataToSend));
+  xhttp.send(JSON.stringify(dataToSend));
+}
+
 function resizeCircle(raidus) {
    oldCircle.setRadius(document.getElementById('radius').value * 1609.34);   
 }

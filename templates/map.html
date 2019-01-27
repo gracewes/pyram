@@ -22,17 +22,18 @@
   <body>
     <div id="map">
     </div>
+    <script src='../static/map.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxBzV4FZRaxmiRlFyICmeMiRk1EJdMOA&callback=initMap"%>
+    async defer></script>
     <form id="getContact">
-      <b>Name:</b><br><input type="text" name="name"/><br>
-      <b>Contact Info:</b><br><input type="text" name="contact"/><br>
-      <button type="button" onclick="alert('add to list')"/>Add Me To Map</button>
+      <b>Name:</b><br><input type="text" id="name" name="name"/><br>
+      <b>Email:</b><br><input type="text" id="email" name="email"/><br>
+      <b>Contact Info:</b><br><input type="text" id="contact" name="contact"/><br>
+      <button type="button" onclick="addToMap('{{interest|safe}}')">Add Me To Map</button>
       <br><div class="slidecontainer">
         <b>Search Radius</b><br>
         <b>1 mile</b><input type="range" min="1" max = "100" step="1" value = "25" class="slider" id="radius" oninput="resizeCircle(value)"/><b>100 miles</b>
       </div>
     </form>
-    <script src='../static/map.js'></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxBzV4FZRaxmiRlFyICmeMiRk1EJdMOA&callback=initMap"%>
-    async defer></script>
   </body>
 </html>
