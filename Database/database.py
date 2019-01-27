@@ -7,6 +7,16 @@ class database:
         self.interests = {}
         self.database = {"interests" : self.interests }
     
+    def get_json(self, filename):
+        '''get a database from a json file'''
+        try:
+            with open(filename) as json_file:
+                self.database = json.load(json_file)
+
+        except IOError:
+            print('Could not open file:', filename)
+            # uhh do something? idk?
+
     def add_interest(self, new_interest):
         
         if new_interest in self.interests:
@@ -46,8 +56,14 @@ class database:
             self.add_interest(person_interest)
             self.interests[person_interest]['people'][person_email] = person_dict
     
-    def export_json(self):
+    def format_json(self):
+        '''format database dictionary into json, does not export as file though'''
         json_database = json.dumps(self.database)
         return json_database
+
+    def export_json(self, out_filename):
+        '''export database object as json file'''
+        with open(out_filename, 'w') as out_file:
+            json.dump(self.database, out_file)
 
         
