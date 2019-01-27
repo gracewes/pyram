@@ -30,10 +30,10 @@ function requestContactInfo(){
 }
 
 function placeMarkerAndPanTo(latLng, map) {
-  var marker = new google.maps.Marker({
+   var marker = new google.maps.Marker({
      position: latLng,
      map:map,
-     icon:'../static/Flame-Bright-Orange-Small.png',
+     icon:'../static/Assets/Flame-Bright-Orange-Small.png',
      size: google.maps.Size(20, 20)
    });
   var circle = new google.maps.Circle({
@@ -42,7 +42,7 @@ function placeMarkerAndPanTo(latLng, map) {
      strokeColor: '#F4B642',
      strokeOpacity: 0.2,
      strokeWeight: 1,
-     radius: 1000000,
+     radius: document.getElementById('radius').value * 1609.34,
      fillColor: '#F4B642',
      fillOpacity: 0.35
 
@@ -60,4 +60,25 @@ function placeMarkerAndPanTo(latLng, map) {
    }
    oldCircle = circle;
    map.panTo(latLng);
+}
+
+function displayNeighbors(neighbors) {
+  neighbors.foreach(function(person) {
+   var marker = new google.maps.Marker({
+     position: person.latLng,
+     map:map,
+     icon:'../static/Assets/Flame-Orange-Other-Small.png',
+     size: google.maps.Size(20, 20)
+   });
+  var circle = new google.maps.Circle({
+     center: person.latLng,
+     map: map,
+     strokeColor: '#F4B642',
+     strokeOpacity: 0.2,
+     strokeWeight: 1,
+     radius: person.radius * 1609.34,
+     fillColor: '#F4B642',
+     fillOpacity: 0.35
+   });
+  });
 }
