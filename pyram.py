@@ -13,6 +13,9 @@ def get_neighors(lat, lng, radius, interest):
     db = Database.Database()
     db.get_json('DatabaseInteraction/db.json')
     data = db.database
+    if(not (interest in data['interests'])):
+        data['interests'] = {"people":{}}
+        return []
     neighbors = []
     for key, person in data['interests'][interest]['people'].items():
         cur_lat = person['latitude']
