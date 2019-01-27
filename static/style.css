@@ -103,6 +103,16 @@ body {
 .radius-for-pyram {
    	position: absolute;
         z-index: 5;
+	padding: 20px;
         left: 10px
         top: 10px;
+}
+.menu-div {
+	position: absolute;
+	z-index: 5;
+	padding: 20px;
+	left: 10px;
+	top: 120px;
+	display: none;
+  	background-color: #fff;
 }
