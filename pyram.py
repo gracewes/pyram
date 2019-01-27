@@ -66,7 +66,3 @@ if __name__ == "__main__":
         app.run(host='0.0.0.0', debug=True, port=5000)
     else:
         app.run(host='0.0.0.0', port=80)
-<<<<<<< HEAD
-
-=======
->>>>>>> ceb68b2f2815e45254ec68faa7d0c61054d84a77
