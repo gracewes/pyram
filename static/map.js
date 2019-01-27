@@ -36,12 +36,18 @@ function addToMap(interest){
      "contact":  document.getElementById('contact').value,
      "lat": oldMarker.getPosition().lat(),
      "lng": oldMarker.getPosition().lng(),
-     "radius": oldCircle.getRadius()
+     "radius": oldCircle.getRadius() / 1609.34
   }
   closeModal();
   var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if(this.readyState == 4 && this.status == 200) {
+           var neighbors = JSON.parse(xhttp.responseText);
+           console.log(neighbors);
+           displayNeighbors(neighbors);
+      }
+  }
   xhttp.open("POST", "/getpyram", true);
-  console.log(JSON.stringify(dataToSend));
   xhttp.send(JSON.stringify(dataToSend));
 }
 
@@ -82,15 +88,21 @@ function placeMarkerAndPanTo(latLng, map) {
 }
 
 function displayNeighbors(neighbors) {
-  neighbors.foreach(function(person) {
+  neighbors.forEach(function(person) {
    var marker = new google.maps.Marker({
-     position: person.latLng,
+     position: {
+         "lat": person.latitude,
+         "lng": person.longitude
+     },
      map:map,
      icon:'../static/Assets/Flame-Orange-Other-Small.png',
      size: google.maps.Size(20, 20)
    });
   var circle = new google.maps.Circle({
-     center: person.latLng,
+     center: {
+        "lat":person.latitude,
+        "lng": person.longitude
+     },
      map: map,
      strokeColor: '#F4B642',
      strokeOpacity: 0.2,
