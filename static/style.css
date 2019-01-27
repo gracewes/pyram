@@ -85,9 +85,9 @@
 	background: #3875d7;
 	color: white;
 }
-#getContact {
-  display: none;
-  position: absolute;
-  left: 10px;
-  top: 10px;
+.radius-for-pyram {
+   	position: absolute;
+        z-index: 5;
+        left: 10px
+        top: 10px;
 }

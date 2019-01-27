@@ -1,7 +1,6 @@
 var map;
 var oldCircle;
 var oldMarker;
-var firstClick = true;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), 
     {
@@ -18,16 +17,16 @@ function initMap() {
 //    });
     map.addListener('click', function(e) {
     placeMarkerAndPanTo(e.latLng, map);
-    if(firstClick){
-      requestContactInfo();
-      firstClick = false;
-    }
     });
 }
-function requestContactInfo(){
+function openModal(){
   //alert("cheked the button - worked");
-  document.getElementById('getContact').style.display= 'block' ;
+  $(".modal").addClass("is-active");
 }
+
+function closeModal() {
+  $(".modal").removeClass("is-active");
+};
 
 function addToMap(interest){
   var dataToSend = {
@@ -39,6 +38,7 @@ function addToMap(interest){
      "lng": oldMarker.getPosition().lng(),
      "radius": oldCircle.getRadius()
   }
+  closeModal();
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/getpyram", true);
   console.log(JSON.stringify(dataToSend));
