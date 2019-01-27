@@ -55,6 +55,16 @@ def get_pyram():
     return jsonify(neighbors)
 
 
+@app.route('/updateneighbors', methods=['POST'])
+def update_neighbors():
+    DB_NAME = 'DatabaseInteraction/db.json'
+    assert(request.method=='POST')
+    
+    payload = json.loads(request.get_data())
+
+    neighbors = get_neighors(payload['lat'], payload['lng'], payload['radius'], payload['interest'])
+    return jsonify(neighbors)
+
 
 @app.route('/map/<interest>')
 def map(interest):
