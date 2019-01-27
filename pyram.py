@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 from DatabaseInteraction import Database
 import json
 
@@ -13,8 +13,16 @@ def home_page():
 
     return render_template('index.html')
 
-
-
+@app.route('/getpyram', methods=['POST'])
+def get_pyram():
+    assert(request.method=='POST')
+    
+    db = Database.Database()
+    db.get_json('DatabaseInteraction/db.json')
+    # payload = request.form
+    # name = payload['name']
+    # print(name)
+    return "complete"
 
 @app.route('/map/<interest>')
 def map(interest):

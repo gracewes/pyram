@@ -11,7 +11,6 @@ class Database:
         try:
             with open(filename) as json_file:
                 self.database = json.load(json_file)
-
         except IOError:
             print('Could not open file:', filename)
             # uhh do something? idk?
