@@ -38,6 +38,9 @@ function placeMarkerAndPanTo(latLng, map) {
      fillOpacity: 0.35
 
    });
+    circle.addListener('click', function(e) {
+    placeMarkerAndPanTo(e.latLng, map);
+    });
    if (oldMarker != undefined) {
       oldMarker.setMap(null);
    }
