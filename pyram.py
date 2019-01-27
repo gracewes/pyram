@@ -20,7 +20,7 @@ def get_neighors(lat, lng, radius, interest):
         cur_long = person['longitude']
         
         distance = great_circle((lat, lng), (cur_lat, cur_long)).miles
-        if(distance - radius - person['radius']):
+        if(distance - radius - person['radius'] <= 0):
             neighbors.append(person)
     
     return neighbors
