@@ -29,11 +29,27 @@ function requestContactInfo(){
   document.getElementById('getContact').style.display= 'block' ;
 }
 
+function addToMap(){
+  var dataToSend = {
+     "name": document.getElementById('name').value,
+     "email":  document.getElementById('email').value,
+     "contact":  document.getElementById('contact').value,
+     "lat": oldMarker.getPosition().lat(),
+     "lng": oldMarker.getPosition().lng(),
+     "radius": oldCircle.getRadius()
+  }
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/getPyram", true);
+  xhttp.send(dataToSend);
+}
+
 function resizeCircle(raidus) {
    oldCircle.setRadius(document.getElementById('radius').value * 1609.34);   
 }
 
 function placeMarkerAndPanTo(latLng, map) {
+   console.log(latLng.lat());
+   console.log(latLng.lng());
    var marker = new google.maps.Marker({
      position: latLng,
      map:map,
