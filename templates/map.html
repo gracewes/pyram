@@ -25,10 +25,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
+    <div id="wrapper">
     <div id="map">
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxBzV4FZRaxmiRlFyICmeMiRk1EJdMOA&callback=initMap"%>
     async defer></script>
+    <div class="radius-for-pyram">
+    <a class="button" href="javascript:openModal()">Place my pyram</a>
+    <div class="slidecontainer">
+      <b>Search Radius</b><br>
+      <b>1 mile</b><input type="range" min="1" max = "100" step="1" value = "25" class="slider" id="radius" oninput="resizeCircle(value)"/><b>100 miles</b>
+    </div>
+   </div>
    <div class="modal" id="contact-options">
     <div class="modal-background"></div>
     <div class="modal-content">
@@ -59,12 +67,6 @@
     <button class="modal-close is-large" aria-label="close" onclick="javascript:closeModal()"></button>
     </div>
    </div>
-    <div class="radius-for-pyram">
-    <a class="button" href="javascript:openModal()">Place my pyram</a>
-    <div class="slidecontainer">
-      <b>Search Radius</b><br>
-      <b>1 mile</b><input type="range" min="1" max = "100" step="1" value = "25" class="slider" id="radius" oninput="resizeCircle(value)"/><b>100 miles</b>
-    </div>
    </div>
   </body>
 </html>
