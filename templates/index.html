@@ -6,9 +6,10 @@
     <title>Home - Pryam</title>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script src="../static/index.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
-  <body onload="document.forms.bing.query.focus(); getSubscriptionKey();">
+  <body>
     <section class="hero is-dark is-bold"> 
         <div class="hero-body">
             <div class="inline container">
@@ -18,7 +19,6 @@
                 <h2 class="subtitle">Connecting interesting people</h2>
             </div>
         </div>
-     
     </section>
     <section class="section">
           <div class="container">
@@ -27,9 +27,8 @@
                 <h1 class="title">I am interested in...</h1>
                 <div class="field has-addons">
                   <div class="control is-expanded">
-                      <!-- <form name="bing" oninput="return bingAutosuggest(this.query.value, getSubscriptionKey())"> -->
-                    <form name="bing">
-                      <input name="query" list="activities" class="input is-large" type="text" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
+                    <form>
+                      <input id="query" list="activities" class="input is-large" type="text" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
                       <datalist id="activities">
                         <option value="Hiking">
                         <option value="Rock Climbing">
@@ -44,59 +43,12 @@
                     </form>
                   </div>
                   <div class="control">
-                    <input type="submit" value="Search" class="button is-dark is-large">
+                    <a href="javascript:buildURL()" class="button is-dark is-large">Search</a>
                   </div>
-                </div>
-                <h2>Results</h2>
-                <div id="results">
-                  <p>None yet.</p>
                 </div>
               </div>
             </div>
           </div>
     </section>
   </body>
-  <script type="text/javascript">
-
-  function getSubscriptionKey() {
-       return "52f6b71b989f4deea974d4e7199ed6cd";
-  }
-  
-  function pre(text) {
-      return "<pre>" + text.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "</pre>"
-  }
-  
-  function renderSearchResults(results) {
-      document.getElementById("results").innerHTML = pre(JSON.stringify(results, null, 2));
-  }
-  
-  function bingAutosuggest(query, key) {
-      var endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/Suggestions";
-  
-      var request = new XMLHttpRequest();
-  
-      try {
-          request.open("GET", endpoint + "?q=" + encodeURIComponent(query));
-      }
-      catch (e) {
-          renderErrorMessage("Bad request");
-          return false;
-      }
-  
-      request.setRequestHeader("Ocp-Apim-Subscription-Key", key);
-  
-      request.addEventListener("load", function() {
-          if (this.status === 200) {
-              renderSearchResults(JSON.parse(this.responseText));
-          }
-          else {
-              if (this.status === 401) getSubscriptionKey();
-              renderErrorMessage(this.statusText, this.status);
-          }
-      });
-  
-      request.send();
-      return false;
-  }
-  // --></script>
 </html>
