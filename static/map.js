@@ -95,6 +95,11 @@ function displayNeighbors(neighbors) {
    var linkForPerson = document.createElement("a");
    linkForPerson.appendChild(document.createTextNode(person.name));
    personForList.appendChild(linkForPerson);
+   var contactInfoList = document.createElement("UL");
+   var contactInfo = document.createElement("LI");
+   contactInfo.appendChild(document.createTextNode(person['contact info']));
+   contactInfoList.appendChild(contactInfo);
+   personForList.appendChild(contactInfoList);
    list.appendChild(personForList);
    var marker = new google.maps.Marker({
      position: {
