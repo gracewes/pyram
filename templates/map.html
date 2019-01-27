@@ -17,9 +17,15 @@
         padding: 0;
       }
     </style>
+    <link rel="stylesheet" href='../static/style.css'> 
   </head>
   <body>
     <div id="map"></div>
+    <form id="getContact">
+      <b>Name:</b><br><input type="text" name="name"/><br>
+      <b>Contact Info:</b><br><input type="text" name="contact"/><br>
+      <button type="button" onclick="alert('add to list')"/>Add Me To Map</button>
+    </form>
     <script src='../static/map.js'></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxBzV4FZRaxmiRlFyICmeMiRk1EJdMOA&callback=initMap"%>
     async defer></script>
