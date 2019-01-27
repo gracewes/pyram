@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from Database import database
+from DatabaseInteraction import Database
 
 app = Flask(__name__)
 
@@ -8,6 +8,7 @@ mode = 'DEV'
 
 @app.route('/')
 def home_page():
+    db = Database.Database()
     
     return render_template('index.html')
 

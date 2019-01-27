@@ -1,6 +1,6 @@
 import json 
 
-class person:
+class Person:
 
     # class definition for a person using the platform
     

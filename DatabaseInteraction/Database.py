@@ -1,5 +1,6 @@
 import json
-class database:
+
+class Database:
     '''makes a json file of people sorted by interests '''
     def __init__(self):
         self.interests = {}
