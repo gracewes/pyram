@@ -1,6 +1,4 @@
-import json 
-from person import person
-
+import json
 class database:
     '''makes a json file of people sorted by interests '''
     def __init__(self):
