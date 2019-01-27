@@ -1,8 +1,15 @@
 function buildURL(activity) {
-    //var activity = document.getElementById("query").value;
     var searchIndex = window.location.href.search("/index.html");
-    var builtURL = "/map/" + activity;
+    var builtURL = "/map/" + encodeURI(activity);
     window.location.href = builtURL;
+}
+
+function chooseFirst(event) {
+    event.preventDefault();
+    var matchContainer = document.getElementById("matchButtons");
+    if (matchContainer.firstChild) {
+        buildURL(matchContainer.firstChild.firstChild.firstChild.firstChild.innerHTML);
+    }
 }
 
 function addButton(activity, container) {
@@ -25,6 +32,16 @@ function addButton(activity, container) {
     formElement.appendChild(buttonElement);
 }
 
+function getMatches(searchTerm, searchList) {
+    var matches = [];
+    for (var i = 0; i < searchList.length; i++) {
+        if (searchList[i].toLowerCase().search(searchTerm.toLowerCase()) != -1) {
+            matches.push(searchList[i]);
+        }
+    }
+    return matches;
+}
+
 function populateMatches() {
     var matchContainer = document.getElementById("matchButtons");
     // delete all old children
@@ -32,8 +49,12 @@ function populateMatches() {
         matchContainer.removeChild(matchContainer.firstChild);
     }
 
-    var matches = ["Golf", "Go Karts", "GoLang"];
-    for (var i = 0; i < matches.length; i++) {
-        addButton(matches[i], matchContainer);
+    var currentInput = document.getElementById("query").value;
+    if (currentInput.length > 2) {
+        var matches = getMatches(currentInput, interests);
+
+        for (var i = 0; i < matches.length; i++) {
+            addButton(matches[i], matchContainer);
+        }
     }
 }

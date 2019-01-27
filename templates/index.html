@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <script src="../static/index.js"></script>
+    <script src="../static/interests.js">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
-  <body onload="document.forms.activity.query.focus();">
+  <body>
     <section class="hero is-dark is-bold"> 
         <div class="hero-body">
             <div class="container">
@@ -31,19 +32,12 @@
                 <h1 class="title">I am interested in...</h1>
                 <div class="field">
                   <div class="control is-expanded">
-                    <form name="activity">
-                      <input id="query" name="query" type="text" oninput="populateMatches()" class="input is-large" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
+                    <form  onsubmit="chooseFirst(event)">
+                      <input id="query" autofocus type="text" oninput="populateMatches()" class="input is-large" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
                     </form>
                   </div>
                 </div>
                 <div class="container" id="matchButtons">
-                  <div class="field">
-                    <div class="control">
-                      <form>
-                        <button class="input is-large is-dark" type="button" onclick="buildURL('Skiing')">Push Me!</button>
-                      </form>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
