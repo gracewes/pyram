@@ -50,7 +50,8 @@ function populateMatches() {
     }
 
     var currentInput = document.getElementById("query").value;
-    if (currentInput.length > 2) {
+
+    if (currentInput.length > 1) {
         var matches = getMatches(currentInput, interests);
 
         for (var i = 0; i < matches.length; i++) {
