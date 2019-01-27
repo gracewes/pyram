@@ -1,6 +1,6 @@
 function buildURL(activity) {
     var searchIndex = window.location.href.search("/index.html");
-    var builtURL = "/map/" + encodeURI(activity);
+    var builtURL = "/map/" + encodeURI(activity.toLowerCase());
     window.location.href = builtURL;
 }
 
