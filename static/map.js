@@ -7,15 +7,15 @@ function initMap() {
     {
        disableDefaultUI:true
     }); 
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      map.setCenter(initialLocation);
-      map.setZoom(3);
-    }, function(positionError) {
+//    navigator.geolocation.getCurrentPosition(function(position) {
+//      var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//      map.setCenter(initialLocation);
+//      map.setZoom(3);
+//    }, function(positionError) {
     // User denied geolocation prompt - default to Chicago
       map.setCenter(new google.maps.LatLng(39.8097343, -98.5556199));
       map.setZoom(3);
-    });
+//    });
     map.addListener('click', function(e) {
     placeMarkerAndPanTo(e.latLng, map);
     if(firstClick){
@@ -27,6 +27,10 @@ function initMap() {
 function requestContactInfo(){
   //alert("cheked the button - worked");
   document.getElementById('getContact').style.display= 'block' ;
+}
+
+function resizeCircle(raidus) {
+   oldCircle.setRadius(document.getElementById('radius').value * 1609.34);   
 }
 
 function placeMarkerAndPanTo(latLng, map) {
@@ -45,7 +49,6 @@ function placeMarkerAndPanTo(latLng, map) {
      radius: document.getElementById('radius').value * 1609.34,
      fillColor: '#F4B642',
      fillOpacity: 0.35
-
    });
     circle.addListener('click', function(e) {
     placeMarkerAndPanTo(e.latLng, map);
