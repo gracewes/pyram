@@ -26,7 +26,9 @@ def get_neighors(longitude, latitude, radius, interest):
     return neighbors
 
 @app.route('/')
-def home_page():    
+def home_page():
+    db = Database.Database()
+
     return render_template('index.html')
 
 @app.route('/getpyram', methods=['POST'])

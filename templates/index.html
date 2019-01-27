@@ -13,7 +13,7 @@
     <script src="../static/index.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
-  <body>
+  <body onload="document.forms.activity.query.focus();">
     <section class="hero is-dark is-bold"> 
         <div class="hero-body">
             <div class="container">
@@ -29,25 +29,20 @@
             <div class="columns">
               <div class="column center-text">
                 <h1 class="title">I am interested in...</h1>
-                <div class="field has-addons">
+                <div class="field">
                   <div class="control is-expanded">
-                    <form>
-                      <input id="query" list="activities" class="input is-large" type="text" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
-                      <datalist id="activities">
-                        <option value="Hiking">
-                        <option value="Rock Climbing">
-                        <option value="Star Gazing">
-                        <option value="Golf">
-                        <option value="Tennis">
-                        <option value="Weight Lifting">
-                        <option value="Bouldering">
-                        <option value="Camping">
-                        <option value="Running">
-                      </datalist>
+                    <form name="activity">
+                      <input id="query" name="query" type="text" oninput="populateMatches()" class="input is-large" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
                     </form>
                   </div>
-                  <div class="control">
-                    <a href="javascript:buildURL()" class="button is-dark is-large">Search</a>
+                </div>
+                <div class="container" id="matchButtons">
+                  <div class="field">
+                    <div class="control">
+                      <form>
+                        <button class="input is-large is-dark" type="button" onclick="buildURL('Skiing')">Push Me!</button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
