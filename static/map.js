@@ -1,4 +1,6 @@
 var map;
+var markers = [];
+var circles = [];
 var oldCircle;
 var oldMarker;
 function initMap() {
@@ -50,6 +52,12 @@ function addToMap(interest){
   }
   xhttp.open("POST", "/getpyram", true);
   xhttp.send(JSON.stringify(dataToSend));
+
+  function updateNeighbors() {
+    xhttp.open("POST", "/updateneighbors", true);
+    xhttp.send(JSON.stringify(dataToSend));
+  }
+  setInterval(updateNeighbors, 3000);
 }
 
 function resizeCircle(raidus) {
@@ -88,12 +96,45 @@ function placeMarkerAndPanTo(latLng, map) {
    map.panTo(latLng);
 }
 
+function highlightPerson(id) {
+  var newCircle = new google.maps.Circle({
+	fillColor: '#f45342',
+	strokeColor: '#f45342',
+	strokeOpacity: 0.2,
+   	center: circles[id].center,
+	radius: circles[id].radius,
+	map: map
+  });
+  circles[id].setMap(null);
+  circles[id] = newCircle;
+}
+
+function unhighlightPerson(id) {
+
+  var newCircle = new google.maps.Circle({
+	fillColor: '#f4b642',
+	strokeColor: '#f4b642',
+	strokeOpacity: 0.2,
+   	center: circles[id].center,
+	radius: circles[id].radius,
+	map: map
+  });
+  circles[id].setMap(null);
+  circles[id] = newCircle;
+
+}
+
 function displayNeighbors(neighbors) {
   var list = document.getElementById("menu-list");
+  var i = 0;
   neighbors.forEach(function(person) {
    var personForList = document.createElement("LI");
    personForList.className = "menu-item";
+   personForList.id = i.toString();
    var linkForPerson = document.createElement("a");
+   linkForPerson.id = i.toString();
+   linkForPerson.setAttribute("onmouseover", "highlightPerson(this.id)");
+   linkForPerson.setAttribute("onmouseout", "unhighlightPerson(this.id)");
    linkForPerson.appendChild(document.createTextNode(person.name));
    personForList.appendChild(linkForPerson);
    var contactInfoList = document.createElement("UL");
@@ -111,6 +152,7 @@ function displayNeighbors(neighbors) {
      icon:'../static/Assets/Flame-Orange-Other-Small.png',
      size: google.maps.Size(20, 20)
    });
+  markers.push(marker);
   var circle = new google.maps.Circle({
      center: {
         "lat":person.latitude,
@@ -124,6 +166,8 @@ function displayNeighbors(neighbors) {
      fillColor: '#F4B642',
      fillOpacity: 0.2
    });
+  circles.push(circle);
+  i = i + 1;
   });
   document.getElementById("menu-div").style.display = "block";
 }
