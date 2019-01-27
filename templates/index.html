@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home - Pryam</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  </head>
-  <body>
-    <section class="hero is-primary">
-      <div class="hero-body">
-          <div class="container">
-            <h1 class="title">Pyram!</h1>
-            <h2 class="subtitle">Connecting interesting people</h2>
-          </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home - Pryam</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+  <link rel="stylesheet" href="static/style.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="static/video.js"></script>
+</head>
+
+<body>
+  <section class="hero is-dark is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="inline">
+          <h1 class="title"><img src="static/Assets/Flame-Orange.png" style="height: 1.5em;"> Pyram</h1>
+          <h1></h1>
+        </div>
+        <h2 class="subtitle">Connecting interesting people</h2>
       </div>
-    </section>
-    <section class="section">
-          <div class="container">
-            <div class="columns">
-              <div class="column">
-                <h1 class="title">I am interested in...</h1>
-                <div class="field has-addons">
-                  <div class="control is-expanded">
-                    <input class="input is-large" type="text" placeholder="Hiking, Rock Climbing, Biking, etc...">
-                  </div>
-                  <div class="control">
-                    <input type="submit" value="Search" class="button is-primary is-large">
-                  </div>
-                </div>
-              </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title">I am interested in...</h1>
+          <div class="field has-addons">
+            <div class="control is-expanded">
+              <input class="input is-large" type="text" placeholder="Hiking, Rock Climbing, Biking, etc...">
+            </div>
+            <div class="control">
+              <input type="submit" value="Search" class="button is-primary is-large">
             </div>
           </div>
-    </section>
-  </body>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="homepage-hero-module">
+    
+      <div class="video-container">
+          <div class="abs">
+        <div class="filter"></div>
+        <video autoplay loop muted playsinline class="fillWidth">
+          <source src="static/Assets/Rocky_Beach.webm" type="video/webm" />Your browser does not support the video tag.
+          I suggest you upgrade your browser.
+          <source src="PATH_TO_WEBM" type="video/webm" />Your browser does not support the video tag. I suggest you
+          upgrade your browser.
+        </video>
+        <div class="poster hidden">
+          <img src="PATH_TO_JPEG" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
