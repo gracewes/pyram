@@ -1,4 +1,6 @@
 var map;
+var oldCircle;
+var oldMarker;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), 
     {
@@ -35,6 +37,18 @@ function placeMarkerAndPanTo(latLng, map) {
      fillColor: '#F4B642',
      fillOpacity: 0.35
 
-  });
+   });
+    circle.addListener('click', function(e) {
+    placeMarkerAndPanTo(e.latLng, map);
+    });
+   if (oldMarker != undefined) {
+      oldMarker.setMap(null);
+   }
+   oldMarker = marker;
+  
+   if (oldCircle != undefined) {
+      oldCircle.setMap(null);
+   }
+   oldCircle = circle;
    map.panTo(latLng);
 }
