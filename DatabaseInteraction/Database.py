@@ -17,7 +17,7 @@ class Database:
 
     def add_interest(self, new_interest):
         
-        if new_interest in self.interests:
+        if new_interest in self.database['interests']:
             print(new_interest, ' already in interests dictionary')
         else:
 
@@ -25,7 +25,7 @@ class Database:
             people = dict(people={})
 
             #add new interest to interests dict
-            self.interests[new_interest] = people
+            self.database['interests'][new_interest] = people
         
     def get_interest(self, person):
         '''given a person dict, returns the interest'''
@@ -44,15 +44,15 @@ class Database:
         person_interest = self.get_interest(person_dict)
         person_email = self.get_email(person_dict)
 
-        if person_interest in self.interests:
+        if person_interest in self.database['interests']:
             #if interest already exists, simply add new person to person dict
             #if person is already in person dict, should simply update info
-            self.interests[person_interest]['people'][person_email] = person_dict
+            self.database['interests'][person_interest]['people'][person_email] = person_dict
            
         else:
             #if interest doesnt exits yet, create new interest, addd person to person dict mapped by email
             self.add_interest(person_interest)
-            self.interests[person_interest]['people'][person_email] = person_dict
+            self.database['interests'][person_interest]['people'][person_email] = person_dict
     
     def format_json(self):
         '''format database dictionary into json, does not export as file though'''
