@@ -61,6 +61,7 @@ class Database:
 
     def export_json(self, out_filename):
         '''export database object as json file'''
+        print(self.database)
         with open(out_filename, 'w') as out_file:
             json.dump(self.database, out_file)
 
