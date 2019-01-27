@@ -1,3 +1,3 @@
-git pull origin prod
+git pull origin master
 pm2 restart all
 
