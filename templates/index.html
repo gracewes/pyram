@@ -4,29 +4,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home - Pryam</title>
+    <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script src="../static/index.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
   <body>
-    <section class="hero is-primary">
-      <div class="hero-body">
-          <div class="container">
-            <h1 class="title">Pyram!</h1>
-            <h2 class="subtitle">Connecting interesting people</h2>
-          </div>
-      </div>
+    <section class="hero is-dark is-bold"> 
+        <div class="hero-body">
+            <div class="container">
+                <a href="/">
+                  <h1 class="title"><img src="static/Assets/Flame-Orange.png" style="height: 1.5em;"> Pyram</h1>
+                </a>
+                <h2 class="subtitle">Connecting interesting people</h2>
+            </div>
+        </div>
     </section>
     <section class="section">
           <div class="container">
             <div class="columns">
-              <div class="column">
+              <div class="column center-text">
                 <h1 class="title">I am interested in...</h1>
                 <div class="field has-addons">
                   <div class="control is-expanded">
-                    <input class="input is-large" type="text" placeholder="Hiking, Rock Climbing, Biking, etc...">
+                    <form>
+                      <input id="query" list="activities" class="input is-large" type="text" placeholder="Hiking, Rock Climbing, Biking, etc..." autocomplete=off>
+                      <datalist id="activities">
+                        <option value="Hiking">
+                        <option value="Rock Climbing">
+                        <option value="Star Gazing">
+                        <option value="Golf">
+                        <option value="Tennis">
+                        <option value="Weight Lifting">
+                        <option value="Bouldering">
+                        <option value="Camping">
+                        <option value="Running">
+                      </datalist>
+                    </form>
                   </div>
                   <div class="control">
-                    <input type="submit" value="Search" class="button is-primary is-large">
+                    <a href="javascript:buildURL()" class="button is-dark is-large">Search</a>
                   </div>
                 </div>
               </div>
