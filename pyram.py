@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+from Database import *
+
 app = Flask(__name__)
 
 mode = 'DEV'

@@ -2,6 +2,12 @@
 .inline{
     display: inline-block;
 }
+.center-text{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .abs{
     float:left;
     position: absolute;
