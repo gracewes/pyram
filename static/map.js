@@ -159,6 +159,16 @@ function clearNeighborMarkers() {
   neighborCircles = [];
 }
 
+function clearMap() {
+  clearNeighborMarkers();
+  clearNeighborList();
+  oldMarker.setMap(null);
+  oldCircle.setMap(null);
+  oldMarker = null;
+  oldCircle = null;
+  document.getElementById("menu-div").style.display = "none";
+}
+
 function displayNeighbors(neighbors) {
   var i = 0;
   clearNeighborList();
