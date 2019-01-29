@@ -113,6 +113,9 @@ body {
 	padding: 20px;
 	left: 10px;
 	top: 120px;
+        width: 30%;
+	max-height: 75%;
+	overflow-y: scroll;
 	display: none;
   	background-color: #fff;
 }
