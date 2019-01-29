@@ -104,7 +104,7 @@ body {
    	position: absolute;
         z-index: 5;
 	padding: 20px;
-        left: 10px
+        left: 10px;
         top: 10px;
 }
 .menu-div {
@@ -115,4 +115,12 @@ body {
 	top: 120px;
 	display: none;
   	background-color: #fff;
+}
+#reset-options {
+	position: absolute;
+	z-index: 5;
+	padding: 20px;
+	right: 10px;
+	bottom: 10px;
+
 }

@@ -26,54 +26,60 @@
   </head>
   <body>
     <div id="wrapper">
-    <div id="map">
+      <div id="map"></div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxBzV4FZRaxmiRlFyICmeMiRk1EJdMOA&callback=initMap" async defer></script>
+      <div class="radius-for-pyram">
+        <a class="button is-dark" href="javascript:openModal()">Place Pyram</a>
+        <div class="slidecontainer">
+          <b>Search Radius</b><br>
+          <b>1 mile</b><input type="range" min="1" max = "100" step="1" value = "25" class="slider" id="radius" oninput="resizeCircle(value)"/><b>100 miles</b>
+        </div>
+      </div>
+      <div class="modal" id="contact-options">
+        <div class="modal-background"></div>
+          <div class="modal-content">
+            <form id="getContact">
+              <table id="modal-table">
+                <tr>
+                  <div class="columns">
+                    <div class="column">
+                      <b>Name:</b><br>
+                      <input type="text" id="name" name="name"/>
+                    </div>
+                    <div class="column">
+                      <b>Email:</b><br>
+                      <input type="text" id="email" name="email"/>
+                    </div>
+                    <div class="column">
+                      <b>Contact Info:</b><br>
+                      <input type="text" id="contact" name="contact"/>
+                    </div>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="columns">
+                    <div class="column">
+                      <a class="button" href="javascript:addToMap('{{interest|safe}}')">Add Me To Map</a>
+                    </div>
+                  </div>
+                </tr>
+              </table>
+            </form>
+            <button class="modal-close is-large" aria-label="close" onclick="javascript:closeModal()"></button>
+          </div>
+        </div>
+      </div>   
+      <div class="menu-div" id="menu-div">
+        <aside class="menu">
+          <p class="menu-label">Your Neighbors</p>
+            <ul class="menu-list" id="menu-list">
+            </ul>
+        </aside>
+      </div>
+      <div id="reset-options">
+        <a class="button is-dark" href="javascript:clearMap()">Clear Map</a>
+        <a class="button is-dark" href="/">New Activity Search</a>
+      </div>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxBzV4FZRaxmiRlFyICmeMiRk1EJdMOA&callback=initMap"%>
-    async defer></script>
-    <div class="radius-for-pyram">
-    <a class="button is-dark" href="javascript:openModal()">Place Pyram</a>
-    <div class="slidecontainer">
-      <b>Search Radius</b><br>
-      <b>1 mile</b><input type="range" min="1" max = "100" step="1" value = "25" class="slider" id="radius" oninput="resizeCircle(value)"/><b>100 miles</b>
-    </div>
-   </div>
-   <div class="modal" id="contact-options">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-    <form id="getContact">
-    <table id="modal-table">
-     <tr>
-      <div class="columns">
-       <div class="column">
-        <b>Name:</b><br><input type="text" id="name" name="name"/>
-       </div>
-       <div class="column">
-        <b>Email:</b><br><input type="text" id="email" name="email"/>
-       </div>
-       <div class="column">
-        <b>Contact Info:</b><br><input type="text" id="contact" name="contact"/>
-       </div>
-       </div>
-       </tr>
-       <tr>
-       <div class="columns">
-       <div class="column">
-        <a class="button" href="javascript:addToMap('{{interest|safe}}')">Add Me To Map</a>
-       </div>
-       </div>
-      </table>
-     </div>
-    </form>
-    <button class="modal-close is-large" aria-label="close" onclick="javascript:closeModal()"></button>
-    </div>
-   <div class="menu-div" id="menu-div">
-   <aside class="menu">
-    <p class="menu-label">Your Neighbors</p>
-     <ul class="menu-list" id="menu-list">
-     </ul>
-   </aside>
-   </div>
-   </div>
-   </div>
   </body>
 </html>
