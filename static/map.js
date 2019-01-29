@@ -1,6 +1,6 @@
 var map;
-var markers = [];
-var circles = [];
+var neighborMarkers = [];
+var neighborCircles = [];
 var oldCircle;
 var oldMarker;
 function initMap() {
@@ -8,12 +8,18 @@ function initMap() {
     {
        disableDefaultUI:true
     }); 
+// Code for using user's location to center the map on open
+// Need to have https for this to work
+
+
 //    navigator.geolocation.getCurrentPosition(function(position) {
 //      var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 //      map.setCenter(initialLocation);
 //      map.setZoom(3);
 //    }, function(positionError) {
     // User denied geolocation prompt - default to Chicago
+
+
       map.setCenter(new google.maps.LatLng(39.8097343, -98.5556199));
       map.setZoom(3);
 //    });
@@ -22,7 +28,6 @@ function initMap() {
     });
 }
 function openModal(){
-  //alert("cheked the button - worked");
   $(".modal").addClass("is-active");
   $("input[name=name]").focus();
 }
@@ -95,39 +100,33 @@ function highlightPerson(id) {
 	fillColor: '#f45342',
 	strokeColor: '#f45342',
 	strokeOpacity: 0.2,
-   	center: circles[id].center,
-	radius: circles[id].radius,
+   	center: neighborCircles[id].center,
+	radius: neighborCircles[id].radius,
 	map: map
   });
-  circles[id].setMap(null);
-  circles[id] = newCircle;
+  neighborCircles[id].setMap(null);
+  neighborCircles[id] = newCircle;
 }
 
 function unhighlightPerson(id) {
-
   var newCircle = new google.maps.Circle({
 	fillColor: '#f4b642',
 	strokeColor: '#f4b642',
 	strokeOpacity: 0.2,
-   	center: circles[id].center,
-	radius: circles[id].radius,
+   	center: neighborCircles[id].center,
+	radius: neighborCircles[id].radius,
 	map: map
   });
-  circles[id].setMap(null);
-  circles[id] = newCircle;
-
+  neighborCircles[id].setMap(null);
+  neighborCircles[id] = newCircle;
 }
 
-function displayNeighbors(neighbors) {
-  var list = document.getElementById("menu-list");
-
-  var i = 0;
-  neighbors.forEach(function(person) {
+function addNeighborListElement(person, id) {
+   var list = document.getElementById("menu-list");
    var personForList = document.createElement("LI");
    personForList.className = "menu-item";
-   personForList.id = i.toString();
    var linkForPerson = document.createElement("a");
-   linkForPerson.id = i.toString();
+   linkForPerson.id = id.toString();
    linkForPerson.setAttribute("onmouseover", "highlightPerson(this.id)");
    linkForPerson.setAttribute("onmouseout", "unhighlightPerson(this.id)");
    linkForPerson.appendChild(document.createTextNode(person.name));
@@ -138,6 +137,34 @@ function displayNeighbors(neighbors) {
    contactInfoList.appendChild(contactInfo);
    personForList.appendChild(contactInfoList);
    list.appendChild(personForList);
+}
+
+function clearNeighborList() {
+  var neighborList = document.getElementById("menu-list");
+  while(neighborList.firstChild) {
+    neighborList.removeChild(neighborList.firstChild);
+  }
+}
+
+function clearNeighborMarkers() {
+  neighborMarkers.forEach(function(marker) {
+    marker.setMap(null);
+    marker = null;
+  });
+  neighborMarkers = [];
+  neighborCircles.forEach(function(circle) {
+    circle.setMap(null);
+    circle = null;
+  });
+  neighborCircles = [];
+}
+
+function displayNeighbors(neighbors) {
+  var i = 0;
+  clearNeighborList();
+  clearNeighborMarkers();
+  neighbors.forEach(function(person) {
+   addNeighborListElement(person, i);
    var marker = new google.maps.Marker({
      position: {
          "lat": person.latitude,
@@ -147,7 +174,7 @@ function displayNeighbors(neighbors) {
      icon:'../static/Assets/Flame-Orange-Other-Small.png',
      size: google.maps.Size(20, 20)
    });
-  markers.push(marker);
+  neighborMarkers.push(marker);
   var circle = new google.maps.Circle({
      center: {
         "lat":person.latitude,
@@ -161,7 +188,7 @@ function displayNeighbors(neighbors) {
      fillColor: '#F4B642',
      fillOpacity: 0.2
    });
-  circles.push(circle);
+  neighborCircles.push(circle);
   i = i + 1;
   });
   document.getElementById("menu-div").style.display = "block";
