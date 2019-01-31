@@ -29,11 +29,16 @@
       <div id="map"></div>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxBzV4FZRaxmiRlFyICmeMiRk1EJdMOA&callback=initMap" async defer></script>
       <div class="radius-for-pyram">
-        <a class="button is-dark" href="javascript:openModal()">Place Pyram</a>
         <div class="slidecontainer">
-          <b>Search Radius</b><br>
-          <b>1 mile</b><input type="range" min="1" max = "100" step="1" value = "25" class="slider" id="radius" oninput="resizeCircle(value)"/><b>100 miles</b>
+          <b>Search Radius:</b><br>
+          <b>1 mile</b><input type="range" list="miles-list" min="1" max = "100" step="1" value = "25" class="slider" id="radius" oninput="resizeCircle(value)"/>
+ 	  <b>100 miles</b>
         </div>
+	<div class="date-pickers">
+	  <b>Begin Date:</b><input type="date" id="begin-date"/><br>
+	  <b>End Date:</b><input type="date" id="end-date"/><br>
+	</div>
+        <a class="button is-dark" id="place-pyram" href="javascript:openModal()">Place Pyram</a>
       </div>
       <div class="modal" id="contact-options">
         <div class="modal-background"></div>
@@ -43,16 +48,16 @@
                 <tr>
                   <div class="columns">
                     <div class="column">
-                      <b>Name:</b><br>
+                      <b class="modal-text">Name:</b><br>
                       <input type="text" id="name" name="name"/>
                     </div>
                     <div class="column">
-                      <b>Email:</b><br>
-                      <input type="text" id="email" name="email"/>
+                      <b class="modal-text">Email:</b><br>
+                      <input type="email" id="email" name="email"/>
                     </div>
                     <div class="column">
-                      <b>Contact Info:</b><br>
-                      <input type="text" id="contact" name="contact"/>
+                      <b class="modal-text">Contact Info:</b><br>
+                      <input type="textarea" id="contact" name="contact"/>
                     </div>
                   </div>
                 </tr>
