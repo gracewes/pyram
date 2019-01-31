@@ -37,6 +37,14 @@ function closeModal() {
 };
 
 function addToMap(interest){
+  var beginDate = document.getElementById('begin-date').value;
+  var endDate =  document.getElementById('end-date').value;
+  if (beginDate == null) {
+    beginDate = new Date().toDateInputValue();
+  }
+  if (endDate == null) {
+    endDate = new Date().toDateInputValue();
+  }
   var dataToSend = {
      "interest": interest,
      "name": document.getElementById('name').value,
@@ -44,7 +52,9 @@ function addToMap(interest){
      "contact":  document.getElementById('contact').value,
      "lat": oldMarker.getPosition().lat(),
      "lng": oldMarker.getPosition().lng(),
-     "radius": oldCircle.getRadius() / 1609.34
+     "radius": oldCircle.getRadius() / 1609.34,
+     "beginDate": beginDate,
+     "endDate" : endDate
   }
   closeModal();
   var xhttp = new XMLHttpRequest();

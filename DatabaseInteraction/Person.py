@@ -4,7 +4,7 @@ class Person:
 
     # class definition for a person using the platform
     
-    def __init__(self, user_name, email, longitude, latitude, radius, interest, contact_info='None' ):
+    def __init__(self, user_name, email, longitude, latitude, radius, interest, contact_info='None', begin_date, end_date ):
         # construct person
         self.user_name = user_name
         self.email = email
@@ -13,6 +13,8 @@ class Person:
         self.radius = radius
         self.interest = interest
         self.contact_info = contact_info
+        self.begin_date = begin_date
+        self.end_date = end_date
 
     def get_user_name(self):
         return self.user_name
@@ -35,6 +37,12 @@ class Person:
     def get_contact_info(self):
         # might want to check if contact info has been inputed yet
         return self.contact_info
+   
+    def get_begin_date(self):
+        return self.begin_date
+
+    def get_end_date(self):
+        return self.end_date
 
     def change_user_name(self, new_user_name):
         self.user_name = new_user_name
@@ -55,6 +63,12 @@ class Person:
         # can be used to add new contact info since the default for contact info is an empty string 
         self.contact_info = new_contact_info
 
+    def change_begin_date(self, new_begin_date):
+        self.begin_date = new_begin_date
+
+    def change_end_date(self, new_end_date):
+        self.end_date = new_end_date
+
     def person_data_dict(self):
         person_data = {}
 
@@ -65,6 +79,8 @@ class Person:
         person_data['radius'] = self.radius
         person_data['interest'] = self.interest
         person_data['contact info']= self.contact_info
+        person_data['begin date'] = self.begin_date
+        person_date['end date'] = self.end_date
 
         return person_data
 
