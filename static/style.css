@@ -103,17 +103,19 @@ body {
 .radius-for-pyram {
    	position: absolute;
         z-index: 5;
-	padding: 20px;
+	padding: 5px;
         left: 10px;
         top: 10px;
+	background-color: #bbb;
+	width: 20%;
 }
 .menu-div {
 	position: absolute;
 	z-index: 5;
-	padding: 20px;
+	padding: 10px;
 	left: 10px;
-	top: 120px;
-        width: 30%;
+	top: 180px;
+        width: 20%;
 	max-height: 75%;
 	overflow-y: scroll;
 	display: none;
@@ -126,4 +128,13 @@ body {
 	right: 10px;
 	bottom: 10px;
 
+}
+.modal-text {
+	color: #fff;
+}
+#place-pyram {
+	padding: 10px;
+}
+.date-pickers {
+	padding: 5px;
 }
