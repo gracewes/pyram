@@ -4,7 +4,7 @@ class Person:
 
     # class definition for a person using the platform
     
-    def __init__(self, user_name, email, longitude, latitude, radius, interest, contact_info='None', begin_date, end_date ):
+    def __init__(self, user_name, email, longitude, latitude, radius, interest, begin_date, end_date, contact_info='None' ):
         # construct person
         self.user_name = user_name
         self.email = email
@@ -79,8 +79,8 @@ class Person:
         person_data['radius'] = self.radius
         person_data['interest'] = self.interest
         person_data['contact info']= self.contact_info
-        person_data['begin date'] = self.begin_date
-        person_date['end date'] = self.end_date
+        person_data['beginDate'] = self.begin_date
+        person_data['endDate'] = self.end_date
 
         return person_data
 
