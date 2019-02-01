@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from geopy.distance import great_circle
 from DatabaseInteraction import Database, Person
 import json
+import datetime
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ mode = 'DEV'
 #mode = 'PROD'
 
 # get intersecting radii
-def get_neighors(lat, lng, radius, interest):
+def get_neighors(lat, lng, radius, interest, beginDate, endDate):
     db = Database.Database()
     db.get_json('DatabaseInteraction/db.json')
     data = db.database
@@ -22,8 +23,9 @@ def get_neighors(lat, lng, radius, interest):
         cur_long = person['longitude']
         
         distance = great_circle((lat, lng), (cur_lat, cur_long)).miles
-        if(distance - radius - person['radius'] <= 0):
-            neighbors.append(person)
+        if((distance - radius - person['radius'] <= 0)): 
+            if((beginDate <= person['endDate']) and (endDate >= person['beginDate'])):
+                neighbors.append(person)
     
     return neighbors
 
@@ -45,10 +47,10 @@ def get_pyram():
     
 
 
-    neighbors = get_neighors(payload['lat'], payload['lng'], payload['radius'], payload['interest'])
+    neighbors = get_neighors(payload['lat'], payload['lng'], payload['radius'], payload['interest'], payload['beginDate'], payload['endDate'])
     db = Database.Database()
     db.get_json(DB_NAME)
-    pers = Person.Person(payload['name'], payload['email'], payload['lng'], payload['lat'], payload['radius'], payload['interest'], payload['contact'])
+    pers = Person.Person(payload['name'], payload['email'], payload['lng'], payload['lat'], payload['radius'], payload['interest'], payload['beginDate'], payload['endDate'], payload['contact'])
     db.add_person(pers)
     db.export_json(DB_NAME)
     print(neighbors)
